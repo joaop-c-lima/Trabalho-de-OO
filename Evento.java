@@ -18,21 +18,35 @@ public class Evento extends Compromisso {
     
     private String nome;
     private String local;
+    private boolean adiavel;
     private Date data_fim;
     private Date hora_fim;
     
-    public Evento(int identificador, int grauPrioridade, String dataStr, String horaStr, int duracao, boolean adiavel, String nome, String local)
+    public Evento(int identificador, int grauPrioridade, String dataStr, String horaStr, int duracao, String nome, String local)
     {
-        super(identificador, grauPrioridade, dataStr, horaStr, duracao, adiavel);
+        super(identificador, grauPrioridade, dataStr, horaStr, duracao);
         this.setFatorMultiplicador(3);
         this.nome = nome;
         this.local = local;
+        this.adiavel = false;
+        
+        
+        
+        //Como a data de fim do evento não é passada nos arquivos de entrada temos
+        //que gerá-la automaticamente a partir da data de inicio, em função
+        //da duração do evento que é em dias
+        
+        //Então pra isso fazemos uso da classe Calendar que possui funções
+        //envolvendo aritmética de dias e essa função retorna a data depois
+        //de alterada então podemos guardar essa informação no atributo
+        //do ohbjeto
         
         SimpleDateFormat FastFor = new SimpleDateFormat("dd/MM/yyyy");
         Calendar c = Calendar.getInstance();
       
         try{
             c.setTime(FastFor.parse(dataStr));
+            //Adicionando os dias de duração do evento à data inicial para obter a final
             c.add(Calendar.DATE, duracao);
             this.data_fim = c.getTime();
             
@@ -78,17 +92,13 @@ public class Evento extends Compromisso {
     
     public void imprimeDados()
     {
-        System.out.printf("\n %d: %s\n", this.getIdentificador(),this.getNome());
+        System.out.printf("%d: %s\n", this.getIdentificador(),this.getNome());
         System.out.printf("Inicio: ");
         imprimeDataHora(this.getData(), this.getHora());
         System.out.printf("Fim: ");
         imprimeDataHora(this.getData_fim(), this.getHora_fim());
         System.out.printf("Prioridade: %d\n", this.getGrauPrioridade());
-        System.out.printf("Duracao: %d dias\n", this.getDuracao());
-        System.out.printf("Local: %s\n", this.getLocal());
-        if(this.isAdiavel())
-        System.out.println("Adiavel: sim");
-        else
-        System.out.println("Adiavel: não");  
+        System.out.printf("Local: %s\n\n", this.getLocal());
+        
     }
 }

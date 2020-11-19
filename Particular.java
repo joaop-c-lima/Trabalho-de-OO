@@ -13,14 +13,19 @@ public class Particular extends Compromisso{
     
     private String motivo;
     private String local;
-    
-    
+        
      public Particular(int identificador, int grauPrioridade, String dataStr, String horaStr, int duracao, boolean adiavel, String motivo, String local)
     {
-        super(identificador, grauPrioridade, dataStr, horaStr, duracao, adiavel);
-        this.setFatorMultiplicador(2);
+        super(identificador, grauPrioridade, dataStr, horaStr, duracao);
+        int aux = adiavel ? 0 : 1;
+        if(aux==1)
+        {
+            this.setMudancaAdiavel(true);
+        }
+        this.setFatorMultiplicador(2+ aux);
         this.motivo = motivo;
         this.local = local;
+        this.setAdiavel(adiavel);
     }
 
     public String getMotivo() {
@@ -39,18 +44,14 @@ public class Particular extends Compromisso{
         this.local = local;
     }
     
-     
+    
       public void imprimeDados()
     {
-        System.out.printf("\n %d: %s\n", this.getIdentificador(),this.getMotivo());
+        System.out.printf("%d: %s\n", this.getIdentificador(),this.getMotivo());
         System.out.printf("Inicio: ");
         imprimeDataHora(this.getData(), this.getHora());
         System.out.printf("Prioridade: %d\n", this.getGrauPrioridade());
-        System.out.printf("Duracao: %d minutos\n", this.getDuracao());
-        System.out.printf("Local: %s\n", this.getLocal());
-        if(this.isAdiavel())
-        System.out.println("Adiavel: sim");
-        else
-        System.out.println("Adiavel: não");  
+        System.out.printf("Local: %s\n\n", this.getLocal());
+       
     }
 }
