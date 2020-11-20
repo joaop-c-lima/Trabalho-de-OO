@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalho_oo;
+
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
@@ -13,6 +9,7 @@ import java.text.ParseException;
  * @author Beatriz
  */
 public abstract class Compromisso {
+
     private int identificador;
     private int grauPrioridade;
     private int fatorMultiplicador;
@@ -24,15 +21,14 @@ public abstract class Compromisso {
 
     public abstract void imprimeDados();
 
-
-    public Compromisso(int identificador, int grauPrioridade, String dataStr, String horaStr, int duracao){
-       this.setIdentificador(identificador);
-       this.setGrauPrioridade(grauPrioridade);
-       this.setData(dataStr);
-       this.setHora(horaStr);
-       this.setDuracao(duracao);
+    public Compromisso(int identificador, int grauPrioridade, String dataStr, String horaStr, int duracao) {
+        this.setIdentificador(identificador);
+        this.setGrauPrioridade(grauPrioridade);
+        this.setData(dataStr);
+        this.setHora(horaStr);
+        this.setDuracao(duracao);
     }
-    
+
     public int getIdentificador() {
         return identificador;
     }
@@ -55,14 +51,15 @@ public abstract class Compromisso {
 
     //As funções pra setar data e hora recebem uma string e transforam em data para armazená-la
     //no atributo do objeto, a data e hora tem seu respectivo formato próprio
-    
     public void setData(String dataStr) {
         SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
-        try{
+        try {
             Date data = DateFor.parse(dataStr);
-            this.data = data;   
-            
-        }catch (ParseException e) {e.printStackTrace();}
+            this.data = data;
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public Date getHora() {
@@ -70,16 +67,18 @@ public abstract class Compromisso {
     }
 
     public void setHora(String horaStr) {
-        
-          SimpleDateFormat DateFor = new SimpleDateFormat("HH:mm");
-        try{
+
+        SimpleDateFormat DateFor = new SimpleDateFormat("HH:mm");
+        try {
             Date hora = DateFor.parse(horaStr);
             this.hora = hora;
-           
-        }catch (ParseException e) {e.printStackTrace();}
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
     //fim explicação data/hora
-    
+
     public int getDuracao() {
         return duracao;
     }
@@ -92,35 +91,27 @@ public abstract class Compromisso {
         return adiavel;
     }
 
-     public void setAdiavel(boolean adiavel) {
-        
-         //Mudando fator multiplicador de acordo com o fato do evento ser
-         //adiável ou não
-         
-        if(!(adiavel) && this.isAdiavel())
-        {
-               this.setFatorMultiplicador(this.getFatorMultiplicador()+1);
-               this.setMudancaAdiavel(true);
+    public void setAdiavel(boolean adiavel) {
 
-            
-        }
-        else if(adiavel && (this.isAdiavel() == false))
-        {
-            if(houveMudancaAdiavel())
-            {
-                this.setFatorMultiplicador(this.getFatorMultiplicador()-1);
+        //Mudando fator multiplicador de acordo com o fato do evento ser
+        //adiável ou não
+        if (!(adiavel) && this.isAdiavel()) {
+            this.setFatorMultiplicador(this.getFatorMultiplicador() + 1);
+            this.setMudancaAdiavel(true);
+
+        } else if (adiavel && (this.isAdiavel() == false)) {
+            if (houveMudancaAdiavel()) {
+                this.setFatorMultiplicador(this.getFatorMultiplicador() - 1);
                 this.setMudancaAdiavel(true);
             }
- 
-        }
 
+        }
 
         this.adiavel = adiavel;
 
-        
     }
-    
-     public int getFatorMultiplicador() {
+
+    public int getFatorMultiplicador() {
         return fatorMultiplicador;
     }
 
@@ -135,22 +126,15 @@ public abstract class Compromisso {
     public void setMudancaAdiavel(boolean mudancaAdiavel) {
         this.mudancaAdiavel = mudancaAdiavel;
     }
-    
-   
-    
+
     //Para impressão da data convertemos o objeto do tipo Date em uma string
     //no respectivo formato
-    public void imprimeDataHora(Date data, Date hora)
-    {
+    public void imprimeDataHora(Date data, Date hora) {
         SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat TimeFor = new SimpleDateFormat("HH:mm");
-        String dateStr= DateFor.format(data);
+        String dateStr = DateFor.format(data);
         String hourStr = TimeFor.format(hora);
         System.out.println(dateStr + " " + hourStr);
     }
-    
-    
-    
-    
-    
+
 }
