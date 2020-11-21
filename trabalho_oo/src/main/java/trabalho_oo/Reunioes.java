@@ -1,4 +1,5 @@
 package trabalho_oo;
+import java.util.Calendar;
 
 public class Reunioes extends Compromisso {
 
@@ -14,6 +15,8 @@ public class Reunioes extends Compromisso {
         } else {
             this.setFatorMultiplicador(5);
         }
+        this.getFim().add(Calendar.MINUTE, duracao);
+
     }
 
     public String getAssunto() {
@@ -29,8 +32,11 @@ public class Reunioes extends Compromisso {
         // TODO Auto-generated method stub
         System.out.println(this.getIdentificador() + ": " + getAssunto());
         System.out.printf("Inicio: ");
-        imprimeDataHora(this.getData(), this.getHora());
+        imprimeDataHora(this.getInicio().getTime());
+        System.out.printf("Fim: ");
+        imprimeDataHora(this.getFim().getTime());
         System.out.println("Prioridade: " + this.getGrauPrioridade());
+        System.out.println("Assunto: " + this.getAssunto());
         System.out.println("\n");
 
     }

@@ -1,8 +1,7 @@
 package trabalho_oo;
 
 import java.util.Date;
-import java.text.SimpleDateFormat;
-import java.text.ParseException;
+import java.util.Calendar;
 
 public class Aula extends Compromisso {
 
@@ -15,6 +14,8 @@ public class Aula extends Compromisso {
         this.tipo = tipo;
         this.setAdiavel(false);
         this.setFatorMultiplicador(2);
+        this.getFim().add(Calendar.MINUTE, duracao);
+
     }
 
     public String getNomeDaDisciplina() {
@@ -38,8 +39,11 @@ public class Aula extends Compromisso {
 
         System.out.println(this.getIdentificador() + "  Aula de " + getNomeDaDisciplina());
         System.out.printf("Inicio: ");
-        imprimeDataHora(this.getData(), this.getHora());
+        imprimeDataHora(this.getInicio().getTime());
+        System.out.printf("Fim: ");
+        imprimeDataHora(this.getFim().getTime());
         System.out.println("Prioridade: " + this.getGrauPrioridade());
+        System.out.println("Nível: " + this.getTipo());
         System.out.println("\n");
 
     }

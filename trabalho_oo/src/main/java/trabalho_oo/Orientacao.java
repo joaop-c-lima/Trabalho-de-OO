@@ -1,5 +1,5 @@
 package trabalho_oo;
-
+import java.util.Calendar;
 
 public class Orientacao extends Compromisso {
 
@@ -19,6 +19,9 @@ public class Orientacao extends Compromisso {
         } else {
             this.setFatorMultiplicador(2);
         }
+        
+        this.getFim().add(Calendar.MINUTE, duracao);
+
 
     }
 
@@ -49,10 +52,14 @@ public class Orientacao extends Compromisso {
     @Override
     public void imprimeDados() {
         // TODO Auto-generated method stub
-        System.out.println(this.getIdentificador() + ": Orientacção de " + getNomeDoOrientado());
+        System.out.println(this.getIdentificador() + ": Orientação de " + getNomeDoOrientado());
         System.out.printf("Inicio: ");
-        imprimeDataHora(this.getData(), this.getHora());
+        imprimeDataHora(this.getInicio().getTime());
+        System.out.printf("Fim: ");
+        imprimeDataHora(this.getFim().getTime());
         System.out.println("Prioridade: " + this.getGrauPrioridade());
+        System.out.println("Nível: " + this.getTipo());
+        System.out.println("Assunto: " + this.getAssunto());
         System.out.println("\n");
 
     }

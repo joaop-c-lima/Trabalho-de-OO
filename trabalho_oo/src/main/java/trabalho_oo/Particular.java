@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package trabalho_oo;
+import java.util.Calendar;
 
 /**
  *
@@ -26,6 +27,8 @@ public class Particular extends Compromisso{
         this.motivo = motivo;
         this.local = local;
         this.setAdiavel(adiavel);
+        this.getFim().add(Calendar.MINUTE, duracao);
+
     }
 
     public String getMotivo() {
@@ -49,7 +52,9 @@ public class Particular extends Compromisso{
     {
         System.out.printf("%d: %s\n", this.getIdentificador(),this.getMotivo());
         System.out.printf("Inicio: ");
-        imprimeDataHora(this.getData(), this.getHora());
+        imprimeDataHora(this.getInicio().getTime());
+        System.out.printf("Fim: ");
+        imprimeDataHora(this.getFim().getTime());
         System.out.printf("Prioridade: %d\n", this.getGrauPrioridade());
         System.out.printf("Local: %s\n\n", this.getLocal());
        
