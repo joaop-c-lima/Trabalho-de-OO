@@ -25,7 +25,7 @@ public class Trabalho_OO {
        //Parametros: identificador, prioridade, data(string), hora(string), duração (minutos), motivo, local
         Particular p = new Particular(2,2, "20/11/2020", "02:00", 60, false, "Compromisso particular", "Local y");
        
-        Reunioes r = new Reunioes(3,2, "23/11/2020", "11:00", 30, "Reunião1", false);
+        Reuniao r = new Reuniao(3,2, "23/11/2020", "11:00", 30, "Reunião1", false);
         
         Aula a = new Aula(4,1, "23/11/2020", "14:00", 120, "Disciplina1", "Graduação");
         

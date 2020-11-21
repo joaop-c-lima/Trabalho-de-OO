@@ -19,7 +19,7 @@ public class Evento extends Compromisso {
     
     public Evento(int identificador, int grauPrioridade, String dataStr, String horaStr, int duracao, String nome, String local)
     {
-        super(identificador, grauPrioridade, dataStr, horaStr, duracao);
+        super(identificador, grauPrioridade, dataStr, horaStr, duracao,4);
         this.setFatorMultiplicador(3);
         this.nome = nome;
         this.local = local;

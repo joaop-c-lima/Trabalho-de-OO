@@ -17,7 +17,7 @@ public class Particular extends Compromisso{
         
      public Particular(int identificador, int grauPrioridade, String dataStr, String horaStr, int duracao, boolean adiavel, String motivo, String local)
     {
-        super(identificador, grauPrioridade, dataStr, horaStr, duracao);
+        super(identificador, grauPrioridade, dataStr, horaStr, duracao,2);
         int aux = adiavel ? 0 : 1;
         if(aux==1)
         {

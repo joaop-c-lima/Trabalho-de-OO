@@ -8,7 +8,7 @@ public class Orientacao extends Compromisso {
     private String assunto;
 
     public Orientacao(int identificador, int grauPrioridade, String dataStr, String horaStr, int duracao, String nomeDoOrientado, String tipo, String assunto, boolean adiavel) {
-        super(identificador, grauPrioridade, dataStr, horaStr, duracao);
+        super(identificador, grauPrioridade, dataStr, horaStr, duracao, 1);
         this.nomeDoOrientado = nomeDoOrientado;
         this.tipo = tipo;
         this.assunto = assunto;

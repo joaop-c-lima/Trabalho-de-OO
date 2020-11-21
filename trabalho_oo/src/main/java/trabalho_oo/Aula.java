@@ -9,7 +9,7 @@ public class Aula extends Compromisso {
     private String tipo;
 
     public Aula(int identificador, int grauPrioridade, String dataStr, String horaStr, int duracao, String nomeDaDisciplina, String tipo) {
-        super(identificador, grauPrioridade, dataStr, horaStr, duracao);
+        super(identificador, grauPrioridade, dataStr, horaStr, duracao, 3);
         this.nomeDaDisciplina = nomeDaDisciplina;
         this.tipo = tipo;
         this.setAdiavel(false);

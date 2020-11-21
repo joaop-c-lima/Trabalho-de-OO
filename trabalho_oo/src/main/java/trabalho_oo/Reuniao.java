@@ -1,12 +1,12 @@
 package trabalho_oo;
 import java.util.Calendar;
 
-public class Reunioes extends Compromisso {
+public class Reuniao extends Compromisso {
 
     private String assunto;
 
-    public Reunioes(int identificador, int grauPrioridade, String dataStr, String horaStr, int duracao, String assunto, boolean adiavel) {
-        super(identificador, grauPrioridade, dataStr, horaStr, duracao);
+    public Reuniao(int identificador, int grauPrioridade, String dataStr, String horaStr, int duracao, String assunto, boolean adiavel) {
+        super(identificador, grauPrioridade, dataStr, horaStr, duracao, 5);
         this.assunto = assunto;
         this.setAdiavel(adiavel);
 
