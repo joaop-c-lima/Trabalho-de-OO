@@ -47,5 +47,15 @@ public class Aula extends Compromisso {
         System.out.println("\n");
 
     }
+    
+    @Override
+    public String getDescricao(){
+        return "Aula de " + this.nomeDaDisciplina;
+    }
+    
+    @Override
+    public String getDadosEspecificos(){
+        return this.tipo;
+    }
 
 }

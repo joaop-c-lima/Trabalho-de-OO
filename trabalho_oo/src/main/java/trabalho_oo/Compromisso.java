@@ -24,8 +24,11 @@ public abstract class Compromisso {
     private boolean adiavel;
     private boolean mudancaAdiavel = false;
     private int valorDoCompromisso;
-
+    private Compromisso motivoDeExclusao;
+    
     public abstract void imprimeDados();
+    public abstract String getDescricao();
+    public abstract String getDadosEspecificos();
 
     public Compromisso(int identificador, int grauPrioridade, String dataStr, String horaStr, int duracao, int valorDoCompromisso) {
         this.setIdentificador(identificador);
@@ -137,6 +140,14 @@ public abstract class Compromisso {
         this.valorDoCompromisso = valorDoCompromisso;
     }
 
+    public Compromisso getMotivoDeExclusao() {
+        return motivoDeExclusao;
+    }
+
+    public void setMotivoDeExclusao(Compromisso motivoDeExclusao) {
+        this.motivoDeExclusao = motivoDeExclusao;
+    }
+    
     //Para impressão da data convertemos o objeto do tipo Date em uma string
     //no respectivo formato
     public void imprimeDataHora(Date datetime) {

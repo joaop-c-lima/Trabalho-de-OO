@@ -63,5 +63,15 @@ public class Orientacao extends Compromisso {
         System.out.println("\n");
 
     }
+    
+    @Override
+    public String getDescricao(){
+        return "Orientção de " + this.getNomeDoOrientado();
+    }
+    
+    @Override
+    public String getDadosEspecificos(){
+        return this.tipo + " " + this.assunto;
+    }
 
 }

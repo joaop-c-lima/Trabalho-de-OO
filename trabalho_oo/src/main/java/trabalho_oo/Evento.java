@@ -61,4 +61,13 @@ public class Evento extends Compromisso {
         System.out.printf("Local: %s\n\n", this.getLocal());
         
     }
+    
+    public String getDescricao(){
+        return this.nome;
+    }
+    
+    @Override
+    public String getDadosEspecificos(){
+        return this.local;
+    }
 }

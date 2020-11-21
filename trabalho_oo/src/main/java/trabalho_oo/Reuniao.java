@@ -40,5 +40,15 @@ public class Reuniao extends Compromisso {
         System.out.println("\n");
 
     }
+    
+    @Override
+    public String getDescricao(){
+        return "Reunião";
+    }
+    
+    @Override
+    public String getDadosEspecificos(){
+        return this.assunto;
+    }
 
 }
