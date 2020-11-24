@@ -25,9 +25,11 @@ public abstract class Compromisso {
     private boolean mudancaAdiavel = false;
     private int valorDoCompromisso;
     private Compromisso motivoDeExclusao;
-    
+
     public abstract void imprimeDados();
+
     public abstract String getDescricao();
+
     public abstract String getDadosEspecificos();
 
     public Compromisso(int identificador, int grauPrioridade, String dataStr, String horaStr, int duracao, int valorDoCompromisso) {
@@ -147,7 +149,7 @@ public abstract class Compromisso {
     public void setMotivoDeExclusao(Compromisso motivoDeExclusao) {
         this.motivoDeExclusao = motivoDeExclusao;
     }
-    
+
     //Para impressão da data convertemos o objeto do tipo Date em uma string
     //no respectivo formato
     public void imprimeDataHora(Date datetime) {
@@ -161,20 +163,40 @@ public abstract class Compromisso {
     public int getImportancia() {
         return fatorMultiplicador * grauPrioridade;
     }
-    
-    public boolean estaEmConflitoCom(Compromisso outro){
-        return !(this.inicio.compareTo(outro.getFim()) <= 0 || this.fim.compareTo(outro.getInicio()) >= 0);
-            
+
+    public boolean estaEmConflitoCom(Compromisso outro) {
+
+        // Se o início está entre o início e o fim do outro ou se o fim está entre o início e o fim do outro
+        if ((this.inicio.compareTo(outro.getInicio()) >= 0 && this.inicio.compareTo(outro.getFim()) <= 0) || (this.fim.compareTo(outro.getInicio()) >= 0 && this.fim.compareTo(outro.getFim()) <= 0)) {
+            return true;
+        } else {
+            return false;
+        }
+
+//        return !(this.inicio.compareTo(outro.getFim()) <= 0 || this.fim.compareTo(outro.getInicio()) >= 0);
     }
 
     public boolean maisImportanteQue(Compromisso outro) {
+
         if (this.getImportancia() == outro.getImportancia()) {
+
             if (this.inicio.compareTo(outro.getInicio()) == 0) {
+
                 if (this.valorDoCompromisso == outro.getValorDoCompromisso()) {
+
                     return true;
-                } else return this.valorDoCompromisso > outro.getValorDoCompromisso();
-            } else return this.inicio.compareTo(outro.getInicio()) > 0;
-        } else return this.getImportancia() > outro.getImportancia();
+
+                } else {
+                    return this.valorDoCompromisso > outro.getValorDoCompromisso();
+                }
+
+            } else {
+                return this.inicio.compareTo(outro.getInicio()) < 0;
+            }
+
+        } else {
+            return this.getImportancia() > outro.getImportancia();
+        }
     }
 
 }

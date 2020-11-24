@@ -64,30 +64,59 @@ public class Agenda {
     }
 
     public void addCompromisso(Compromisso compromisso) {
+        
         this.adicionarNaListaDeCompromissos(compromisso);
+        
         List<Compromisso> molde = this.compromissosConfirmados;
+        
+        int size = this.compromissosConfirmados.size();
+        
+        boolean estaEmConflito = false;
+        
         for (Compromisso confirmado : compromissosConfirmados) {
+           
             if (confirmado.estaEmConflitoCom(compromisso)) {
+                estaEmConflito = true;
                 if (confirmado.maisImportanteQue(compromisso)) {
+                    
                     if (compromisso.isAdiavel()) {
+                        
                         this.adicionarNaListaDeCompromissosAdiados(compromisso, confirmado);
-                        return;
+                        
+                        break;
+                        
                     } else {
+                        
                         this.adicionarNaListaDeCompromissosCancelados(compromisso, confirmado);
-                        return;
+                        
+                        break;
                     }
+                    
                 } else {
+                    
                     if (confirmado.isAdiavel()) {
+                        
                         this.adicionarNaListaDeCompromissosAdiados(confirmado, compromisso);
+                        
                     } else {
+                        
                         this.adicionarNaListaDeCompromissosCancelados(confirmado, compromisso);
+                        
                     }
+                    
+                    this.adicionarNaListaDeCompromissosConfirmados(compromisso);
+//                    this.compromissosConfirmados.remove(confirmado);
                     molde.remove(confirmado);
+                    break;
                 }
             }
         }
+        
+        if(size == 0 || !estaEmConflito){
+            this.adicionarNaListaDeCompromissosConfirmados(compromisso);
+        }
         this.compromissosConfirmados = molde;
-        this.adicionarNaListaDeCompromissosConfirmados(compromisso);
+        
     }
 
     public String getRelatorioConfirmados() {
@@ -110,7 +139,7 @@ public class Agenda {
         }
         return result.replaceFirst("\n\n", "");
     }
-    
+
     public String getRelatorioCancelados() {
         String result = "";
         for (Compromisso compromisso : compromissosCancelados) {
@@ -121,7 +150,7 @@ public class Agenda {
         }
         return result.replaceFirst("\n\n", "");
     }
-    
+
     public String getRelatorioCompleto() {
         String result = "";
         for (Compromisso compromisso : compromissos) {
@@ -130,58 +159,86 @@ public class Agenda {
                     + "\nFim: " + this.getDataHoraString(compromisso.getFim())
                     + "\nPrioridade: " + compromisso.getGrauPrioridade()
                     + "\n" + compromisso.getDadosEspecificos();
-                    
+
         }
         return result.replaceFirst("\n\n", "");
     }
 
     private void adicionarNaListaDeCompromissos(Compromisso compromisso) {
-        for (int i = 0; i < this.compromissos.size(); i++) {
-            if (compromissos.get(i).getInicio().compareTo(compromisso.getInicio()) < 0) {
-                this.compromissos.add(i, compromisso);
-                break;
-            }
-            if (i == this.compromissos.size() - 1) {
-                this.compromissos.add(compromisso);
+
+        int size = this.compromissos.size();
+        if (size == 0) {
+            this.compromissos.add(compromisso);
+        } else {
+            for (int i = 0; i < size; i++) {
+
+                if (compromissos.get(i).getInicio().compareTo(compromisso.getInicio()) > 0) {
+                    this.compromissos.add(i, compromisso);
+
+                    break;
+                }
+                if (i == size - 1) {
+                    this.compromissos.add(compromisso);
+
+                }
             }
         }
+
     }
 
     private void adicionarNaListaDeCompromissosAdiados(Compromisso compromisso, Compromisso motivo) {
         compromisso.setMotivoDeExclusao(motivo);
-        for (int i = 0; i < this.compromissosAdiados.size(); i++) {
-            if (compromissosAdiados.get(i).getInicio().compareTo(compromisso.getInicio()) < 0) {
-                this.compromissos.add(i, compromisso);
-                break;
-            }
-            if (i == this.compromissosAdiados.size() - 1) {
-                this.compromissosAdiados.add(compromisso);
+        int size = this.compromissosAdiados.size();
+        if (size == 0) {
+            this.compromissosAdiados.add(compromisso);
+           
+        } else {
+            
+            for (int i = 0; i < size; i++) {
+                if (compromissosAdiados.get(i).getInicio().compareTo(compromisso.getInicio()) < 0) {
+                    this.compromissos.add(i, compromisso);
+                    
+                    break;
+                }
+                if (i == size - 1) {
+                    this.compromissosAdiados.add(compromisso);
+                    
+                }
             }
         }
     }
-    
 
     private void adicionarNaListaDeCompromissosCancelados(Compromisso compromisso, Compromisso motivo) {
         compromisso.setMotivoDeExclusao(motivo);
-        for (int i = 0; i < this.compromissosCancelados.size(); i++) {
-            if (compromissosCancelados.get(i).getInicio().compareTo(compromisso.getInicio()) < 0) {
-                this.compromissosCancelados.add(i, compromisso);
-                break;
-            }
-            if (i == this.compromissosCancelados.size() - 1) {
-                this.compromissosCancelados.add(compromisso);
+        int size = this.compromissosCancelados.size();
+        if (size == 0) {
+            this.compromissosCancelados.add(compromisso);
+        } else {
+            for (int i = 0; i < size; i++) {
+                if (compromissosCancelados.get(i).getInicio().compareTo(compromisso.getInicio()) > 0) {
+                    this.compromissosCancelados.add(i, compromisso);
+                    break;
+                }
+                if (i == size - 1) {
+                    this.compromissosCancelados.add(compromisso);
+                }
             }
         }
     }
 
     private void adicionarNaListaDeCompromissosConfirmados(Compromisso compromisso) {
-        for (int i = 0; i < this.compromissosConfirmados.size(); i++) {
-            if (compromissosConfirmados.get(i).getInicio().compareTo(compromisso.getInicio()) < 0) {
-                this.compromissosConfirmados.add(i, compromisso);
-                break;
-            }
-            if (i == this.compromissosConfirmados.size() - 1) {
-                this.compromissosConfirmados.add(compromisso);
+        int size = this.compromissosConfirmados.size();
+        if (size == 0) {
+            this.compromissosConfirmados.add(compromisso);
+        } else {
+            for (int i = 0; i < size; i++) {
+                if (compromissosConfirmados.get(i).getInicio().compareTo(compromisso.getInicio()) > 0) {
+                    this.compromissosConfirmados.add(i, compromisso);
+                    break;
+                }
+                if (i == size - 1) {
+                    this.compromissosConfirmados.add(compromisso);
+                }
             }
         }
     }
