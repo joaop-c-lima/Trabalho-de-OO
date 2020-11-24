@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.FileReader;
+import java.io.FileWriter;
 
 /**
  *
@@ -38,7 +39,7 @@ public class Trabalho_OO {
 
         Agenda agenda = new Agenda();
 
-        String path = System.getProperty("user.dir") + "/src/main/java/trabalho_oo" + args[0];
+        String path = args[0];
 
         File myObj = new File(path);
 
@@ -100,7 +101,7 @@ public class Trabalho_OO {
                         String grau = data;
 
                         agenda.addCompromisso(new Aula(Integer.parseInt(identificador), Integer.parseInt(grau), dataDoCompromisso, horario, Integer.parseInt(duracao), nomeDaDisciplina, nivel));
-                        
+
                         // Pula para a próxima linha
                         if (myReader.hasNextLine()) {
                             data = myReader.nextLine();
@@ -332,11 +333,9 @@ public class Trabalho_OO {
 
                         // Grau de prioridade
                         grau = data;
-                        
-                      
-                        
+
                         agenda.addCompromisso(new Particular(Integer.parseInt(identificador), Integer.parseInt(grau), dataDoCompromisso, horario, Integer.parseInt(duracao), adiavel.contains("true"), motivo, localDoCompromisso));
-                        
+
                         // Pula para a próxima linha
                         if (myReader.hasNextLine()) {
                             data = myReader.nextLine();
@@ -351,44 +350,75 @@ public class Trabalho_OO {
             myReader.close();
 
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+            System.out.println("O correu um erro na leitura dos arquivos");
             e.printStackTrace();
         }
 
-        
         String completo = agenda.getRelatorioCompleto();
-        System.out.println("==== Relatório Completo ====");
-        System.out.println(completo);
         
-        String adiados = agenda.getRelatorioAdiados();
-        System.out.println("==== Relatório Adiados ====");
-        System.out.println(adiados);
+        try {
+            
+            File fileRelatCompleto = new File("relatcompromissos.txt");
+            
+            FileWriter relatCompromissos = new FileWriter("relatcompromissos.txt");
+            
+            relatCompromissos.write(completo);
+            relatCompromissos.close();
+            
+        } catch (IOException e) {
+            System.out.println("Ocorreu um erro");
+            e.printStackTrace();
+        }
         
-        String cancelados = agenda.getRelatorioCancelados();
-        System.out.println("==== Relatório Cancelados ====");
-        System.out.println(cancelados);
-        
-        String confirmados = agenda.getRelatorioConfirmados();
-        System.out.println("==== Relatório Confirmados ====");
-        System.out.println(confirmados);
 
-//        //Parametros: identificador, prioridade, data(string), hora(string), duração (dias), nome do evento, local
-//        Evento e = new Evento(1, 1, "29/11/2020", "23:06", 4, "Evento1", "Local x");
-//
-//        //Parametros: identificador, prioridade, data(string), hora(string), duração (minutos), motivo, local
-//        Particular p = new Particular(2, 2, "20/11/2020", "02:00", 60, false, "Compromisso particular", "Local y");
-//
-//        Reuniao r = new Reuniao(3, 2, "23/11/2020", "11:00", 30, "Reunião1", false);
-//
-//        Aula a = new Aula(4, 1, "23/11/2020", "14:00", 120, "Disciplina1", "Graduação");
-//
-//        Orientacao o = new Orientacao(5, 1, "23/11/2020", "16:00", 120, "Aluno X", "Mestrado", "Assunto x", false);
-//
-//        e.imprimeDados();
-//        p.imprimeDados();
-//        r.imprimeDados();
-//        a.imprimeDados();
-//        o.imprimeDados();
+        String adiados = agenda.getRelatorioAdiados();
+        
+        try {
+            
+            File fileRelatCompleto = new File("relatadiados.txt");
+            
+            FileWriter relatAdiados = new FileWriter("relatadiados.txt");
+            
+            relatAdiados.write(adiados);
+            relatAdiados.close();
+            
+        } catch (IOException e) {
+            System.out.println("Ocorreu um erro");
+            e.printStackTrace();
+        }
+        
+
+        String cancelados = agenda.getRelatorioCancelados();
+        try {
+            
+            File fileRelatCancelados = new File("relatcancelados.txt");
+            
+            FileWriter relatCancelados = new FileWriter("relatcancelados.txt");
+            
+            relatCancelados.write(cancelados);
+            relatCancelados.close();
+            
+        } catch (IOException e) {
+            System.out.println("Ocorreu um erro");
+            e.printStackTrace();
+        }
+        
+
+        String confirmados = agenda.getRelatorioConfirmados();
+        try {
+            
+            File fileRelatConfirmados = new File("relatconfirmados.txt");
+            
+            FileWriter relatConfirmados = new FileWriter("relatconfirmados.txt");
+            
+            relatConfirmados.write(confirmados);
+            relatConfirmados.close();
+            
+        } catch (IOException e) {
+            System.out.println("Ocorreu um erro");
+            e.printStackTrace();
+        }
+
     }
 
 }
