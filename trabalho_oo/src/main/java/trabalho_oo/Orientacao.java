@@ -14,14 +14,13 @@ public class Orientacao extends Compromisso {
         this.assunto = assunto;
         this.setAdiavel(adiavel);
 
-        if (this.isAdiavel()) {
+        if (adiavel) {
             this.setFatorMultiplicador(1);
         } else {
             this.setFatorMultiplicador(2);
         }
         
         this.getFim().add(Calendar.MINUTE, duracao);
-
 
     }
 

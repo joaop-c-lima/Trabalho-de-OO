@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalho_oo;
 
 import java.util.Calendar;
@@ -33,10 +28,10 @@ public abstract class Compromisso {
     public abstract String getDadosEspecificos();
 
     public Compromisso(int identificador, int grauPrioridade, String dataStr, String horaStr, int duracao, int valorDoCompromisso) {
-        this.setIdentificador(identificador);
-        this.setGrauPrioridade(grauPrioridade);
-        this.setDuracao(duracao);
-
+        this.identificador = identificador;
+        this.grauPrioridade = grauPrioridade;
+        this.duracao = duracao;
+        
         //Salvando data e hora de inicio no calendario
         String[] data = dataStr.split("/");
         int dia = Integer.parseInt(data[0]);
@@ -75,6 +70,11 @@ public abstract class Compromisso {
 
     public void setIdentificador(int identificador) {
         this.identificador = identificador;
+    }
+    
+    public String getIdentificadorString() {
+        String aux = Integer.toString(identificador);
+        return ("000000" + aux).substring(aux.length());
     }
 
     public int getGrauPrioridade() {

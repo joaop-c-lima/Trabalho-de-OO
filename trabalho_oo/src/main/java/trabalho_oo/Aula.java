@@ -1,6 +1,5 @@
 package trabalho_oo;
 
-import java.util.Date;
 import java.util.Calendar;
 
 public class Aula extends Compromisso {
@@ -15,7 +14,6 @@ public class Aula extends Compromisso {
         this.setAdiavel(false);
         this.setFatorMultiplicador(2);
         this.getFim().add(Calendar.MINUTE, duracao);
-
     }
 
     public String getNomeDaDisciplina() {

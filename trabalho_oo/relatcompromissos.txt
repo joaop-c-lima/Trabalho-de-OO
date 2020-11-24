@@ -1,88 +1,88 @@
-11: Simpósio Brasileiro de Linguagens de Programação
+000011: Simpósio Brasileiro de Linguagens de Programação
 Inicio: 01/04/2009 00:00
 Fim: 04/04/2009 00:00
 Prioridade: 3
 Rio de Janeiro
 
-3: Aula de Processamento de Dados II
+000003: Aula de Processamento de Dados II
 Inicio: 03/04/2009 14:00
 Fim: 03/04/2009 16:00
 Prioridade: 1
 Graduação
 
-4: Aula de Linguagens de Programação I
+000004: Aula de Linguagens de Programação I
 Inicio: 04/04/2009 11:00
 Fim: 04/04/2009 13:00
 Prioridade: 2
 Graduação
 
-1: Aula de Processamento de Dados I
+000001: Aula de Processamento de Dados I
 Inicio: 05/04/2009 07:00
 Fim: 05/04/2009 09:00
 Prioridade: 1
 Graduação
 
-9: Reunião
+000009: Reunião
 Inicio: 05/04/2009 08:00
 Fim: 05/04/2009 08:30
 Prioridade: 1
 Novas Grades Curriculares
 
-13: Consulta ao Médico
+000013: Consulta ao Médico
 Inicio: 05/04/2009 08:00
 Fim: 05/04/2009 09:00
 Prioridade: 5
 Edifécio Alameda, sala 701
 
-15: Consulta ao Médico
+000015: Consulta ao Médico
 Inicio: 05/04/2009 08:30
 Fim: 05/04/2009 09:30
 Prioridade: 3
 Edifécio Alameda, sala 701
 
-14: Consulta ao Médico
+000014: Consulta ao Médico
 Inicio: 05/04/2009 08:40
 Fim: 05/04/2009 09:40
 Prioridade: 3
 Edifécio Alameda, sala 701
 
-5: Aula de Processamento de Dados II
+000005: Aula de Processamento de Dados II
 Inicio: 05/04/2009 13:00
 Fim: 05/04/2009 15:00
 Prioridade: 2
 Graduação
 
-6: Aula de Engenharia Web
+000006: Aula de Engenharia Web
 Inicio: 06/04/2009 15:00
 Fim: 06/04/2009 18:00
 Prioridade: 5
 Mestrado
 
-8: Orientção de Igor, Murilo e Marcos
+000008: Orientção de Igor, Murilo e Marcos
 Inicio: 06/04/2009 18:00
 Fim: 06/04/2009 20:00
 Prioridade: 3
 Especialização Data da Defesa
 
-2: Aula de Processamento de Dados I
+000002: Aula de Processamento de Dados I
 Inicio: 07/04/2009 07:00
 Fim: 07/04/2009 09:00
 Prioridade: 1
 Graduação
 
-10: Workshop de Metodologias em Engenharia Web
+000010: Workshop de Metodologias em Engenharia Web
 Inicio: 07/04/2009 08:00
 Fim: 08/04/2009 08:00
 Prioridade: 1
 Centro de Convenções de Vitória
 
-7: Aula de Linguagens de Programação I
+000007: Aula de Linguagens de Programação I
 Inicio: 07/04/2009 10:00
 Fim: 07/04/2009 13:00
 Prioridade: 3
 Graduação
 
-12: Almoço de negócios
+000012: Almoço de negócios
 Inicio: 07/04/2009 12:00
 Fim: 07/04/2009 13:00
 Prioridade: 1

@@ -13,11 +13,12 @@ public class Particular extends Compromisso {
 
     public Particular(int identificador, int grauPrioridade, String dataStr, String horaStr, int duracao, boolean adiavel, String motivo, String local) {
         super(identificador, grauPrioridade, dataStr, horaStr, duracao, 2);
-        int aux = adiavel ? 0 : 1;
-        if (aux == 1) {
-            this.setMudancaAdiavel(true);
+        this.setMudancaAdiavel(!adiavel);
+        if (adiavel) {
+            this.setFatorMultiplicador(2);
+        } else {
+            this.setFatorMultiplicador(3);
         }
-        this.setFatorMultiplicador(2 + aux);
         this.motivo = motivo;
         this.local = local;
         this.setAdiavel(adiavel);
@@ -41,6 +42,7 @@ public class Particular extends Compromisso {
         this.local = local;
     }
 
+    @Override
     public void imprimeDados() {
         System.out.printf("%d: %s\n", this.getIdentificador(), this.getMotivo());
         System.out.printf("Inicio: ");

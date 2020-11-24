@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalho_oo;
 import java.util.Calendar;
 
@@ -50,6 +45,7 @@ public class Evento extends Compromisso {
         this.local = local;
     } 
     
+    @Override
     public void imprimeDados()
     {
         System.out.printf("%d: %s\n", this.getIdentificador(),this.getNome());
@@ -62,6 +58,7 @@ public class Evento extends Compromisso {
         
     }
     
+    @Override
     public String getDescricao(){
         return this.nome;
     }

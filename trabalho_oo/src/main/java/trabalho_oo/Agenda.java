@@ -105,7 +105,6 @@ public class Agenda {
                     }
                     
                     this.adicionarNaListaDeCompromissosConfirmados(compromisso);
-//                    this.compromissosConfirmados.remove(confirmado);
                     molde.remove(confirmado);
                     break;
                 }
@@ -123,7 +122,7 @@ public class Agenda {
         String result = "";
         for (Compromisso compromisso : compromissosConfirmados) {
             result = result + "\n\n" + this.getDataHoraString(compromisso.getInicio())
-                    + "\n" + compromisso.getIdentificador()
+                    + "\n" + compromisso.getIdentificadorString()
                     + "\n" + compromisso.getDescricao();
         }
         return result.replaceFirst("\n\n", "");
@@ -132,10 +131,10 @@ public class Agenda {
     public String getRelatorioAdiados() {
         String result = "";
         for (Compromisso compromisso : compromissosAdiados) {
-            result = result + "\n\n" + compromisso.getIdentificador()
+            result = result + "\n\n" + compromisso.getIdentificadorString()
                     + "\n" + compromisso.getDescricao()
                     + "\n" + compromisso.getGrauPrioridade()
-                    + "\n" + compromisso.getMotivoDeExclusao().getIdentificador();
+                    + "\n" + compromisso.getMotivoDeExclusao().getIdentificadorString();
         }
         return result.replaceFirst("\n\n", "");
     }
@@ -143,10 +142,10 @@ public class Agenda {
     public String getRelatorioCancelados() {
         String result = "";
         for (Compromisso compromisso : compromissosCancelados) {
-            result = result + "\n\n" + compromisso.getIdentificador()
+            result = result + "\n\n" + compromisso.getIdentificadorString()
                     + "\n" + compromisso.getDescricao()
                     + "\n" + compromisso.getGrauPrioridade()
-                    + "\n" + compromisso.getMotivoDeExclusao().getIdentificador();
+                    + "\n" + compromisso.getMotivoDeExclusao().getIdentificadorString();
         }
         return result.replaceFirst("\n\n", "");
     }
@@ -154,7 +153,7 @@ public class Agenda {
     public String getRelatorioCompleto() {
         String result = "";
         for (Compromisso compromisso : compromissos) {
-            result = result + "\n\n" + compromisso.getIdentificador() + ": " + compromisso.getDescricao()
+            result = result + "\n\n" + compromisso.getIdentificadorString() + ": " + compromisso.getDescricao()
                     + "\nInicio: " + this.getDataHoraString(compromisso.getInicio())
                     + "\nFim: " + this.getDataHoraString(compromisso.getFim())
                     + "\nPrioridade: " + compromisso.getGrauPrioridade()
